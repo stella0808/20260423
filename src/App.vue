@@ -10,7 +10,13 @@
     </div>
 
     <!-- 導覽列 -->
-    <header class="bg-blue-400/95 backdrop-blur-sm text-white p-4 shadow-md sticky top-0 z-20">
+    <header class="fixed top-0 left-0 w-full bg-blue-400/95 backdrop-blur-sm text-white p-4 shadow-md z-30 transition-transform duration-300 ease-in-out transform -translate-y-full hover:translate-y-0 group">
+      
+      <!-- 觸發下拉的感應區塊 (預設顯示在螢幕最上方，hover 時導覽列滑出) -->
+      <div class="absolute -bottom-5 left-0 w-full h-5 flex justify-center cursor-pointer">
+        <div class="w-24 h-1.5 bg-blue-500/60 rounded-b-lg shadow-sm group-hover:opacity-0 transition-opacity duration-300 mt-0.5" title="碰觸展開選單"></div>
+      </div>
+
       <!-- 全局音效開關 -->
       <button @click="isMuted = !isMuted" class="absolute top-4 right-4 md:right-8 bg-white/20 hover:bg-white/30 p-2 rounded-full backdrop-blur-sm transition-all duration-300 text-xl z-30" :title="isMuted ? '開啟音效' : '關閉音效'">
         <span v-if="!isMuted">🔊</span>
@@ -31,7 +37,7 @@
     </header>
 
     <!-- 主要內容區 -->
-    <main class="max-w-4xl mx-auto p-4 md:p-6 mt-4 bg-white rounded-xl shadow-lg relative z-10">
+    <main class="max-w-4xl mx-auto p-4 md:p-6 mt-24 bg-white rounded-xl shadow-lg relative z-10">
       
       <transition name="fade" mode="out-in">
         <div :key="currentTab">
